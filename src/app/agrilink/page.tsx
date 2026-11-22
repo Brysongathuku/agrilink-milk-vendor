@@ -95,7 +95,7 @@ export default function AnalyticsPage() {
           size="large"
           allowClear
           placeholder="Select collection route to filter analytics"
-          style={{ width: 460 }}
+          className="an-filter"
           options={['Kanjai Route', 'Ikinu Route', 'Ngewa Route', 'Komothai Route', 'Githiga Route'].map((r) => ({ value: r, label: r }))}
         />
       </div>

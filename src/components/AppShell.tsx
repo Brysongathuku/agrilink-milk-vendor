@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Select, Tooltip, App } from 'antd';
-import { ChevronDown, ChevronUp, LogOut, MessageCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, LogOut, Menu, MessageCircle, X } from 'lucide-react';
 import { NAV, PROFILE_OPTIONS } from '@/lib/nav';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -19,15 +19,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return g ? { [g]: true } : {};
   });
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   useEffect(() => {
     const g = groupForPath(pathname);
     if (g) setOpen((o) => ({ ...o, [g]: true }));
+    setMobileOpen(false); // close the mobile menu after navigating
   }, [pathname]);
 
   return (
     <div className="shell">
-      <aside className="sidebar">
+      {mobileOpen && <div className="sidebar-overlay" onClick={() => setMobileOpen(false)} />}
+      <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
         <div className="sidebar-brand">
+          <button type="button" className="sidebar-close" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
+            <X size={22} />
+          </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/pesira-logo.png" alt="Pesira" className="brand-logo" />
           <div className="brand-app">AgriLink</div>
@@ -95,6 +102,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       <div className="main">
         <header className="topbar">
+          <button type="button" className="menu-btn" aria-label="Open menu" onClick={() => setMobileOpen(true)}>
+            <Menu size={24} />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/pesira-logo.png" alt="Pesira" className="topbar-logo" />
           <Tooltip title="Bryson Gathuku">
             <div className="avatar">BG</div>
           </Tooltip>

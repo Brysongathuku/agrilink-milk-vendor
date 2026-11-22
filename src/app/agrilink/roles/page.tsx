@@ -48,7 +48,7 @@ export default function RolesPage() {
   return (
     <div>
       <PageHeader title="ROLES & PROFILE PERMISSIONS" upper boxed={false} actions={<Button type="primary" size="large" icon={<Plus size={18} />}>Create New Role</Button>} />
-      <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 24 }}>
+      <div className="roles-grid">
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <h3 className="section-title" style={{ margin: 0 }}>Roles</h3>

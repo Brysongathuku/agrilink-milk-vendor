@@ -57,7 +57,7 @@ export default function InsightsPage() {
       <div className="insight-hero">
         <div>
           <span className="pill">● KENYA DAIRY BOARD PRICES</span>
-          <h1 style={{ fontSize: 52, lineHeight: 1.05, margin: '22px 0 14px', letterSpacing: -1.5, fontWeight: 800 }}>Milk prices for smarter buying &amp; selling.</h1>
+          <h1 className="insight-title">Milk prices for smarter buying &amp; selling.</h1>
           <p className="muted" style={{ fontSize: 17, maxWidth: 560 }}>
             Follow farm-gate, bulk and retail milk prices from the Kenya Dairy Board so you set fair farmer rates and the right selling price.
           </p>
