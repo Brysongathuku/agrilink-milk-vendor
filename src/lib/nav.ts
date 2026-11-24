@@ -26,6 +26,19 @@ import {
   UserCog,
   Users,
   ListOrdered,
+  Calculator,
+  Tag,
+  Wheat,
+  Warehouse,
+  Beef,
+  Snowflake,
+  Ship,
+  FileCheck,
+  Globe,
+  Wallet,
+  Megaphone,
+  Settings,
+  Factory,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -130,9 +143,114 @@ export const NAV: NavItem[] = [
   { key: 'profile', label: 'Profile', icon: Briefcase, href: `${B}/agency-profile` },
 ];
 
-// Profile switcher: only Milk Vendor is active; the rest are listed but disabled.
+const A = '/abattoir';
+
+export const ABATTOIR_NAV: NavItem[] = [
+  { key: 'ab-analytics', label: 'Analytics', icon: House, href: A },
+  {
+    key: 'ab-orders',
+    label: 'Orders & Planning',
+    icon: ClipboardList,
+    children: [
+      { label: 'Client Orders', href: `${A}/orders`, icon: ClipboardList },
+      { label: 'Live Animal Planner', href: `${A}/planner`, icon: Calculator },
+    ],
+  },
+  {
+    key: 'ab-sourcing',
+    label: 'Livestock Sourcing',
+    icon: Truck,
+    children: [
+      { label: 'Pastoralists', href: `${A}/pastoralists`, icon: Users },
+      { label: 'Procurement Batches', href: `${A}/procurement`, icon: ListOrdered },
+      { label: 'Receiving & Tagging', href: `${A}/animals`, icon: Tag },
+    ],
+  },
+  {
+    key: 'ab-processing',
+    label: 'Processing',
+    icon: Factory,
+    children: [
+      { label: 'Feedlot', href: `${A}/feedlot`, icon: Wheat },
+      { label: 'Lairage', href: `${A}/lairage`, icon: Warehouse },
+      { label: 'Slaughter', href: `${A}/slaughter`, icon: Beef },
+      { label: 'Cold Store', href: `${A}/cold-store`, icon: Snowflake },
+    ],
+  },
+  {
+    key: 'ab-dispatch',
+    label: 'Dispatch & Export',
+    icon: Ship,
+    children: [
+      { label: 'Dispatch & Delivery', href: `${A}/dispatch`, icon: Truck },
+      { label: 'Export Orders', href: `${A}/export-orders`, icon: Globe },
+      { label: 'Shipments & Documents', href: `${A}/shipments`, icon: FileCheck },
+    ],
+  },
+  {
+    key: 'ab-sales',
+    label: 'Sales',
+    icon: TrendingUp,
+    children: [
+      { label: 'Customers', href: `${A}/customers`, icon: Users },
+      { label: 'Invoices & Proformas', href: `${A}/invoices`, icon: FileText },
+      { label: 'Payments & Debtors', href: `${A}/payments`, icon: Wallet },
+    ],
+  },
+  {
+    key: 'ab-finance',
+    label: 'Finance',
+    icon: Landmark,
+    children: [
+      { label: 'Operating Expenses', href: `${A}/expenses`, icon: Receipt },
+      { label: 'Cost & Profit', href: `${A}/profitability`, icon: ChartColumn },
+    ],
+  },
+  {
+    key: 'ab-market',
+    label: 'Market Place',
+    icon: ShoppingBag,
+    children: [
+      { label: 'Products', href: `${A}/products`, icon: Package },
+      { label: 'My Orders', href: `${A}/marketplace-orders`, icon: Truck },
+    ],
+  },
+  {
+    key: 'ab-access',
+    label: 'Market Access',
+    icon: Store,
+    children: [{ label: 'Price Insights', href: `${A}/price-insights`, icon: ChartColumn }],
+  },
+  {
+    key: 'ab-community',
+    label: 'Community',
+    icon: MessageSquare,
+    children: [{ label: 'Price Broadcast', href: `${A}/broadcast`, icon: Megaphone }],
+  },
+  {
+    key: 'ab-compliance',
+    label: 'Compliance',
+    icon: Shield,
+    children: [{ label: 'Licences & Certificates', href: `${A}/compliance`, icon: Scale }],
+  },
+  {
+    key: 'ab-staff',
+    label: 'Staff & Roles',
+    icon: UserCog,
+    children: [
+      { label: 'Users', href: `${A}/users`, icon: Users },
+      { label: 'Department Access', href: `${A}/access`, icon: Settings },
+    ],
+  },
+  { key: 'ab-profile', label: 'Profile', icon: Briefcase, href: `${A}/settings` },
+];
+
+// Profile switcher: Milk Vendor and Abattoir are active; the rest are listed but locked.
+export const PROFILE_HOME: Record<string, string> = { 'Milk Vendor': '/agrilink', Abattoir: '/abattoir' };
+
 export const PROFILE_OPTIONS = [
   'Milk Vendor',
+  'Abattoir',
   'Aggregator',
   'Farmer',
   'Agronomists',
@@ -141,4 +259,4 @@ export const PROFILE_OPTIONS = [
   'Agroprocessor',
   'Seed producer',
   'SACCO',
-].map((p) => ({ value: p, label: p, className: p === 'Milk Vendor' ? undefined : 'locked-option' }));
+].map((p) => ({ value: p, label: p, className: PROFILE_HOME[p] ? undefined : 'locked-option' }));

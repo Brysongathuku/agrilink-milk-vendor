@@ -1,4 +1,4 @@
-# Pesira AgriLink – Milk Vendor
+# Pesira AgriLink – Milk Vendor & Abattoir
 
 A Next.js 15 (App Router) + Ant Design front end for the **Milk Vendor** profile. It started as a copy of the AgriLink Aggregator profile. All data is demo data; there are no backend calls yet.
 
@@ -62,3 +62,15 @@ Analytics uses the Pesira Insights colours: teal `#2DB8A9`, orange `#F0A030`, bl
 - Replace the arrays in `src/lib/data.ts` and in each page with API calls.
 - Connect the Kenya Dairy Board price feed in `market-insights/page.tsx`.
 - Refrigerator, chest freezer and dairy meal prices are indicative. Every other price comes from the ILRI price list.
+
+## Abattoir profile (`/abattoir`)
+
+Pick **Abattoir** in the profile dropdown. It follows each animal from the pastoralist to payment, including export:
+
+Order → Sourcing → Receiving & tagging → Feedlot (or direct slaughter) → Lairage → Slaughter → Chilling & cold store → Dispatch / export shipment → Invoice & credit → Cost & profit
+
+- Species: goats, sheep, cattle, camels (yields and prices in `src/lib/abattoir-data.ts`)
+- The tag number and batch number link records across stages
+- Export: export orders in USD, shipments with export permit, veterinary health certificate, Halal certificate and certificate of origin
+- Market Place: 14 tools for pastoralists and slaughterhouses (indicative KES prices)
+- Shared components: `src/components/Marketplace.tsx`, `src/components/ListPage.tsx`

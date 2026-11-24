@@ -1,18 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Select, Tooltip, App } from 'antd';
 import { ChevronDown, ChevronUp, LogOut, Menu, MessageCircle, X } from 'lucide-react';
-import { NAV, PROFILE_OPTIONS } from '@/lib/nav';
+import { ABATTOIR_NAV, NAV, PROFILE_HOME, PROFILE_OPTIONS } from '@/lib/nav';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { message } = App.useApp();
 
+  const isAbattoir = pathname === '/abattoir' || pathname.startsWith('/abattoir/');
+  const profile = isAbattoir ? 'Abattoir' : 'Milk Vendor';
+  const nav = isAbattoir ? ABATTOIR_NAV : NAV;
+
   const groupForPath = (p: string) =>
-    NAV.find((n) => n.children?.some((c) => c.href === p))?.key ?? null;
+    nav.find((n) => n.children?.some((c) => c.href === p))?.key ?? null;
 
   const [open, setOpen] = useState<Record<string, boolean>>(() => {
     const g = groupForPath(pathname);
@@ -38,20 +43,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/pesira-logo.png" alt="Pesira" className="brand-logo" />
           <div className="brand-app">AgriLink</div>
-          <div className="brand-role">Milk Vendor</div>
-          {/* Every AgriLink profile is listed; only Milk Vendor is active, so picking another one does nothing. */}
+          <div className="brand-role">{profile}</div>
+          {/* Every AgriLink profile is listed; only Milk Vendor and Abattoir are active, the rest do nothing. */}
           <Select
             className="profile-select"
             size="large"
-            value="Milk Vendor"
+            value={profile}
             options={PROFILE_OPTIONS}
-            onChange={() => undefined}
+            onChange={(v: string) => {
+              const home = PROFILE_HOME[v];
+              if (home && v !== profile) router.push(home);
+            }}
             popupMatchSelectWidth
           />
         </div>
 
         <nav className="nav">
-          {NAV.map((item) => {
+          {nav.map((item) => {
             const Icon = item.icon;
             if (!item.children) {
               const active = pathname === item.href;
