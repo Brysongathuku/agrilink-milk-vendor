@@ -35,7 +35,7 @@ export default function LotsPage() {
   const data = onlyExpiring ? ROWS.filter((r) => r.expiring) : ROWS;
   return (
     <div className="stack">
-      <PageHeader eyebrow="AgriLink · Traceability" title="Received Lots" subtitle="Every milk delivery is a traceable lot: QA status, expiry and remaining quantity at a glance." boxed={false} />
+      <PageHeader eyebrow="AgriLink · Traceability" title="Received Lots" subtitle="Track milk batches, quality checks and expiry." boxed={false} />
       <Hero chips={[{ value: ROWS.length, label: 'Lots' }, { value: 1, label: 'On hold' }, { value: 3, label: 'Expiring ≤48h' }, { value: 1, label: 'Expired' }]} />
       <SectionCard>
         <div className="toolbar">
@@ -45,7 +45,6 @@ export default function LotsPage() {
           <Button icon={<Download size={16} />}>Download</Button>
         </div>
         <Table<Lot> rowKey="lot" columns={cols} dataSource={data} pagination={false} scroll={{ x: 1100 }} />
-        <p className="demo-note" style={{ marginTop: 12 }}>Quantities in litres for milk lots; bags or pieces for inputs.</p>
       </SectionCard>
     </div>
   );

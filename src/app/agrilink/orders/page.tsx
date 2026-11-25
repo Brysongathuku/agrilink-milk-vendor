@@ -31,7 +31,7 @@ const cols: TableColumnsType<Order> = [
 export default function OrdersPage() {
   return (
     <div className="stack">
-      <PageHeader eyebrow="Market Place" title="My Orders" subtitle="Equipment and inputs you have ordered from the marketplace." />
+      <PageHeader eyebrow="Market Place" title="My Orders" subtitle="Track your marketplace orders." />
       <SectionCard>
         <div className="toolbar">
           <Input prefix={<Search size={16} color="#9ca3af" />} placeholder="Search orders..." style={{ maxWidth: 320 }} />

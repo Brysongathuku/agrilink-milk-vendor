@@ -61,12 +61,12 @@ export default function ListPage({
           />
           {toolbarExtra}
           <Button icon={<Filter size={16} />}>Filters</Button>
-          <Button icon={<Download size={16} />} onClick={() => message.info('CSV export (demo)')}>
+          <Button icon={<Download size={16} />} onClick={() => message.success('Preparing your download')}>
             Download
           </Button>
           <div className="spacer" />
           {addLabel && (
-            <Button type="primary" size="large" icon={<Plus size={18} />} onClick={onAdd ?? (() => message.info(`${addLabel} (demo)`))}>
+            <Button type="primary" size="large" icon={<Plus size={18} />} onClick={onAdd ?? (() => message.info(`${addLabel} is coming soon`))}>
               {addLabel}
             </Button>
           )}

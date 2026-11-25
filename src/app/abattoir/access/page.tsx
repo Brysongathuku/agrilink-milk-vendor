@@ -68,8 +68,8 @@ export default function DepartmentAccessPage() {
       <PageHeader
         eyebrow="Staff & Roles"
         title="Department Access"
-        subtitle="Choose which modules each department can open, and whether it can see money figures. For example, procurement can see orders without seeing prices or profit."
-        actions={<Button type="primary" size="large" onClick={() => message.success('Access saved (demo)')}>Save access</Button>}
+        subtitle="Choose what each department can see."
+        actions={<Button type="primary" size="large" onClick={() => message.success('Access saved')}>Save access</Button>}
       />
       <div className="card">
         <h3 className="section-title">Modules by department</h3>
@@ -77,7 +77,7 @@ export default function DepartmentAccessPage() {
       </div>
       <div className="card">
         <h3 className="section-title">Financial figures</h3>
-        <p className="section-sub">When off, prices, costs, revenue and profit are hidden on every screen for that department.</p>
+        <p className="section-sub">Turn off to hide prices, costs and profit from that department.</p>
         <Table<{ label: string }> rowKey="label" columns={finRow} dataSource={[{ label: 'Can see financial figures' }]} pagination={false} size="middle" scroll={{ x: 1000 }} />
       </div>
     </div>

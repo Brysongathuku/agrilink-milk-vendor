@@ -40,8 +40,8 @@ export default function ColdStorePage() {
   return (
     <ListPage
       eyebrow="Processing"
-      title="Weighing, Chilling & Cold Store"
-      subtitle="Carcasses are reweighed after chilling. Chilling loss and stock per room update automatically."
+      title="Cold Store"
+      subtitle="Track chilled stock and storage rooms."
       stats={
         <Stats>
           <StatCard label="Chilled meat in stock" value={num(Math.round(total))} unit="kg" />
@@ -52,7 +52,6 @@ export default function ColdStorePage() {
       }
       addLabel="Receive into Store"
       searchPlaceholder="Search room, product, batch..."
-      note="Chilling loss = (hot weight − cold weight) ÷ hot weight."
     >
       {(q) => <Table<Row> rowKey="id" columns={cols} dataSource={ROWS.filter((r) => rowMatches(r, q))} pagination={false} scroll={{ x: 1450 }} />}
     </ListPage>

@@ -244,7 +244,7 @@ export default function Marketplace({
               size="large"
               style={{ marginTop: 16 }}
               onClick={() => {
-                message.success('Order placed (demo). It will appear under Market Place › Orders.');
+                message.success('Order placed. You can track it under Market Place › Orders.');
                 setCart([]);
                 setCartOpen(false);
               }}

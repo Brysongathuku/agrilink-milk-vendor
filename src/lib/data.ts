@@ -119,10 +119,10 @@ export const PRODUCTS: Product[] = [
   },
   { id: 'P-10', stock: 6, name: 'Milk Chiller', category: 'Cooling & Infrastructure', image: '/products/milk-chiller.jpg', seller: 'ILRI Dairy Inputs', description: 'Bulk milk cooler that brings milk to 4 °C quickly and cuts afternoon spoilage.', variants: [{ label: 'Standard', price: 250000 }] },
   { id: 'P-11', stock: 18, name: 'Milk ATM / Dispenser', category: 'Cooling & Infrastructure', image: '/products/milk-atm.jpg', seller: 'ILRI Dairy Inputs', description: 'Refrigerated self-service dispenser for retail sales with metered pouring.', variants: [{ label: '50 Litre', price: 15000 }] },
-  { id: 'P-12', stock: 12, name: 'Refrigerator', category: 'Cooling & Infrastructure', seller: 'Pesira Partner Store', description: 'Upright commercial display fridge for packed milk and mala at the outlet.', variants: [{ label: 'Upright display, ~300 L', price: 68000 }], indicative: true },
-  { id: 'P-13', stock: 9, name: 'Chest Freezer', category: 'Cooling & Infrastructure', seller: 'Pesira Partner Store', description: 'Chest freezer for ice packs and frozen dairy stock.', variants: [{ label: '~300 L', price: 58000 }], indicative: true },
+  { id: 'P-12', stock: 12, name: 'Refrigerator', category: 'Cooling & Infrastructure', seller: 'Pesira Partner Store', description: 'Upright commercial display fridge for packed milk and mala at the outlet.', variants: [{ label: 'Upright display, ~300 L', price: 68000 }] },
+  { id: 'P-13', stock: 9, name: 'Chest Freezer', category: 'Cooling & Infrastructure', seller: 'Pesira Partner Store', description: 'Chest freezer for ice packs and frozen dairy stock.', variants: [{ label: '~300 L', price: 58000 }] },
   { id: 'P-14', stock: 130, name: 'SteriScrub Dairy Sanitizer', category: 'Hygiene & Sanitation', image: '/products/steriscrub.jpg', seller: 'ILRI Dairy Inputs', description: 'Dairy-grade sanitizer for cans, buckets and the milk ATM.', variants: [{ label: '5 Litre (market average)', price: 2500 }] },
-  { id: 'P-15', stock: 2000, name: 'Dairy Meal', category: 'Animal Feeds', seller: 'Pesira Partner Store', description: 'Concentrate feed supplied to farmers on credit and recovered from milk payments.', variants: [{ label: '70 kg bag', price: 3100 }], indicative: true },
+  { id: 'P-15', stock: 2000, name: 'Dairy Meal', category: 'Animal Feeds', seller: 'Pesira Partner Store', description: 'Concentrate feed supplied to farmers on credit and recovered from milk payments.', variants: [{ label: '70 kg bag', price: 3100 }] },
 ];
 
 /* ---------------- Analytics ---------------- */

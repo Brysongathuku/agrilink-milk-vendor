@@ -25,7 +25,7 @@ export default function PastoralistsPage() {
     <ListPage
       eyebrow="Livestock Sourcing"
       title="Pastoralists & Suppliers"
-      subtitle="Digital supplier directory with locations, geo-tags and payout method. Every animal traces back to a supplier here."
+      subtitle="Manage the pastoralists and suppliers you buy livestock from."
       chips={[
         { value: PASTORALISTS.length, label: 'Suppliers' },
         { value: 3, label: 'Counties' },

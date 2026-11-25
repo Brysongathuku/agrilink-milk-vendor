@@ -26,7 +26,7 @@ export default function MarketplaceOverview() {
       <PageHeader
         eyebrow="Market Place"
         title="Marketplace Overview"
-        subtitle="Milk handling, testing and cooling equipment for your collection centre."
+        subtitle="Buy equipment and supplies for your milk business."
         actions={
           <Link href="/agrilink/products">
             <Button type="primary" size="large" icon={<ShoppingBag size={18} />}>Browse products</Button>

@@ -50,7 +50,7 @@ export default function ShipmentsPage() {
         docsDone(r) ? (
           <Button size="small">View pack</Button>
         ) : (
-          <Button size="small" type="primary" onClick={() => message.info('Upload dialog (demo)')}>
+          <Button size="small" type="primary" onClick={() => message.info('Document upload is coming soon')}>
             Upload
           </Button>
         ),
@@ -61,7 +61,7 @@ export default function ShipmentsPage() {
     <ListPage
       eyebrow="Dispatch & Export"
       title="Shipments & Export Documents"
-      subtitle="Every export shipment needs an export permit, a veterinary health certificate, a Halal certificate and a certificate of origin before it can fly or sail."
+      subtitle="Track export shipments and their documents."
       chips={[
         { value: ROWS.filter((r) => r.status === 'Scheduled' || r.status === 'Pending').length, label: 'Upcoming shipments' },
         { value: ROWS.filter((r) => !docsDone(r)).length, label: 'Missing documents' },

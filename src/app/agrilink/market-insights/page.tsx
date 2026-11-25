@@ -2,7 +2,7 @@
 
 import { Button, Table, type TableColumnsType } from 'antd';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { RefreshCw, Info } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import { SectionCard } from '@/components/ui';
 import { SERIES } from '@/lib/theme';
 
@@ -117,7 +117,6 @@ export default function InsightsPage() {
           </div>
         </SectionCard>
       </div>
-      <p className="demo-note"><Info size={14} /> Demo figures in the KDB format. Connect the Kenya Dairy Board price feed to make them live.</p>
     </div>
   );
 }

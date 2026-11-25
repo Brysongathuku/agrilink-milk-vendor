@@ -48,7 +48,7 @@ export default function ProductionCostsPage() {
 
   return (
     <div className="stack">
-      <PageHeader title="Production Cost Analysis" subtitle="Monitor overheads (labour, refrigeration, compliance, electricity) and keep cost per litre down." />
+      <PageHeader title="Production Cost Analysis" subtitle="Track your running costs." />
       <Stats>
         <StatCard label="Total overheads (Nov)" value={kes(total)} icon={<DollarSign size={20} color={SERIES.s1} />} />
         <StatCard label="Overhead per litre" value={`KES ${(total / LITRES_THIS_MONTH).toFixed(2)}`} icon={<ChartColumn size={20} color={SERIES.s2} />} foot={`${LITRES_THIS_MONTH.toLocaleString()} L collected this month`} />

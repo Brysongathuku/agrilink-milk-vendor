@@ -28,7 +28,7 @@ export default function ProcurementPage() {
     <ListPage
       eyebrow="Livestock Sourcing"
       title="Procurement Batches"
-      subtitle="Each purchase is a batch: who sold it, how many head, live weight and every cost to bring it to the abattoir."
+      subtitle="Track livestock purchases and their costs."
       chips={[
         { value: BATCHES.length, label: 'Batches' },
         { value: BATCHES.reduce((s, b) => s + b.head, 0), label: 'Head bought' },
@@ -37,7 +37,6 @@ export default function ProcurementPage() {
       ]}
       addLabel="New Batch"
       searchPlaceholder="Search batch, market, supplier..."
-      note="Landed cost = purchase + transport + commission. It feeds the cost per animal on the Cost & Profit page."
     >
       {(q) => <Table<Batch> rowKey="id" columns={cols} dataSource={BATCHES.filter((r) => rowMatches(r, q))} pagination={false} scroll={{ x: 1500 }} />}
     </ListPage>

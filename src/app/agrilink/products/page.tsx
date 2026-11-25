@@ -6,7 +6,6 @@ export default function ProductsPage() {
     <Marketplace
       products={PRODUCTS}
       categories={PRODUCT_CATEGORIES}
-      note="Prices from the ILRI dairy equipment list. Refrigerator, chest freezer and dairy meal prices are indicative."
     />
   );
 }

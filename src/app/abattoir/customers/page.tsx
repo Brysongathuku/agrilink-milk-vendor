@@ -22,7 +22,7 @@ export default function AbCustomersPage() {
     <ListPage
       eyebrow="Sales"
       title="Customers"
-      subtitle="Local buyers and export buyers, with their credit terms and what they owe."
+      subtitle="Manage your customers and track what they owe."
       chips={[
         { value: AB_CUSTOMERS.length, label: 'Customers' },
         { value: AB_CUSTOMERS.filter((c) => c.type === 'Export buyers').length, label: 'Export buyers' },

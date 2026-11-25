@@ -60,7 +60,7 @@ export default function InvoicesPage() {
         okText="Create Invoice"
         onOk={() => {
           setOpen(false);
-          message.success('Invoice created (demo)');
+          message.success('Invoice created');
         }}
       >
         <Form layout="vertical">

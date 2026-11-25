@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { PageHeader, Panel, StatCard, Stats } from '@/components/ui';
 import { SPECIES_COLORS, type Species } from '@/lib/abattoir-data';
-import { kes, num } from '@/lib/format';
+import { kes } from '@/lib/format';
 import { ICON_GREEN, SERIES } from '@/lib/theme';
 import { ChartColumn, Receipt } from 'lucide-react';
 
@@ -74,7 +74,7 @@ export default function ProfitabilityPage() {
 
   return (
     <div className="stack">
-      <PageHeader eyebrow="Finance" title="Cost & Profit" subtitle="Every cost from purchase to slaughter rolls up into profit per animal, per batch, per day and per month." boxed={false} />
+      <PageHeader eyebrow="Finance" title="Cost & Profit" subtitle="See profit by animal, batch, day and month." boxed={false} />
       <Stats>
         <StatCard label="Revenue (last 7 batches)" value={kes(totalRev)} />
         <StatCard label="Profit (last 7 batches)" value={kes(totalProfit)} color="#047857" />
@@ -113,7 +113,6 @@ export default function ProfitabilityPage() {
       <Panel title="Profit by batch" bodyStyle={{ padding: 0 }}>
         <Table<BatchRow> rowKey="batch" columns={cols} dataSource={BATCHES} pagination={false} scroll={{ x: 1500 }} />
       </Panel>
-      <p className="demo-note">Revenue includes carcass and offal sales. Overheads come from Operating Expenses, shared per animal. {num(BATCHES.reduce((s, r) => s + r.head, 0))} animals across 7 batches.</p>
     </div>
   );
 }

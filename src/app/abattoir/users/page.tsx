@@ -31,10 +31,9 @@ export default function AbUsersPage() {
     <ListPage
       eyebrow="Staff & Roles"
       title="Users"
-      subtitle="Staff accounts by department. What each department can open is set on the Department Access page."
+      subtitle="Manage staff accounts."
       addLabel="Invite New User"
       searchPlaceholder="Search by name, email or department..."
-      note="Demo accounts. Names are role titles only."
     >
       {(q) => <Table<U> columns={cols} dataSource={ROWS.filter((r) => rowMatches(r, q))} pagination={false} scroll={{ x: 900 }} />}
     </ListPage>

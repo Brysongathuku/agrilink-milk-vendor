@@ -42,11 +42,11 @@ const yieldCols: TableColumnsType<YieldRow> = [
 ];
 
 const ALERTS = [
-  { level: 'crit', title: 'Mortality in feedlot – Pen 2', body: 'Goat KE-GRS-G-04191 died on 23 Nov (suspected pneumonia). Loss value KES 9,300 charged to batch BT-2611-07.' },
-  { level: 'warn', title: 'Partial condemnation – KE-GRS-B-00774', body: 'Liver condemned (liver flukes). Condemned value KES 3,600 recorded by the meat inspector.' },
-  { level: 'warn', title: 'Chiller 2 at 5.8 °C', body: 'Above the 0–4 °C target for 35 min. 1,420 kg of beef carcasses at risk.' },
-  { level: 'warn', title: 'Invoice overdue – FreshMart Supermarkets', body: 'INV-AB-2611-03 (KES 312,400) passed its 30-day due date on 20 Nov.' },
-  { level: 'ok', title: 'Shipment SHP-2611-02 cleared', body: 'Export permit, veterinary health certificate and Halal certificate verified for 2,400 kg goat carcasses to Dubai.' },
+  { level: 'crit', title: 'Mortality in feedlot – Pen 2', body: 'Goat KE-GRS-G-04191 died on 23 Nov. Loss of KES 9,300 on batch BT-2611-07.' },
+  { level: 'warn', title: 'Partial condemnation – KE-GRS-B-00774', body: 'Liver condemned for liver flukes. KES 3,600 written off.' },
+  { level: 'warn', title: 'Chiller 2 at 5.8 °C', body: 'Above 4 °C for 35 minutes. 1,420 kg of beef inside.' },
+  { level: 'warn', title: 'Invoice overdue – FreshMart Supermarkets', body: 'INV-AB-2611-03 for KES 312,400 was due on 20 Nov.' },
+  { level: 'ok', title: 'Shipment SHP-2611-02 cleared', body: 'All documents approved for 2,400 kg of goat meat to Dubai.' },
 ];
 
 export default function AbattoirAnalytics() {
@@ -55,7 +55,7 @@ export default function AbattoirAnalytics() {
       <div className="an-head">
         <div>
           <h1 className="an-title">Analytics</h1>
-          <p className="an-sub">Livestock pipeline, yields, chilled stock, local and export sales.</p>
+          <p className="an-sub">Overview of your livestock, production and sales.</p>
         </div>
         <Select size="large" allowClear placeholder="Select species to filter analytics" className="an-filter" options={SPECIES.map((s) => ({ value: s, label: s }))} />
       </div>
@@ -64,13 +64,13 @@ export default function AbattoirAnalytics() {
         <div className="tile teal">
           <div className="tile-title">Animals in Pipeline</div>
           <div className="tile-value">{num(inPipeline)}</div>
-          <div className="tile-foot">From purchase to chiller, all species</div>
+          <div className="tile-foot">All species</div>
           <Layers className="tile-icon" size={56} strokeWidth={1.4} />
         </div>
         <div className="tile orange">
           <div className="tile-title">Local Sales (Nov)</div>
           <div className="tile-value">{kes(thisMonth.local * 1000000)}</div>
-          <div className="tile-foot">Butcheries, hotels, supermarkets, institutions</div>
+          <div className="tile-foot">This month</div>
           <DollarSign className="tile-icon" size={56} strokeWidth={1.4} />
         </div>
         <div className="tile blue">
@@ -85,7 +85,7 @@ export default function AbattoirAnalytics() {
         <div className="kpi"><div className="kpi-label">Avg dressing % (goats)</div><div className="kpi-value">43.5%</div><div className="kpi-foot">Target 40–45%</div></div>
         <div className="kpi"><div className="kpi-label">Chilled meat in stock</div><div className="kpi-value">6,840 kg</div><div className="kpi-foot">4 chill rooms · avg 2.0% chilling loss</div></div>
         <div className="kpi"><div className="kpi-label">Debtors outstanding</div><div className="kpi-value">{kes(721600)}</div><div className="kpi-foot">+ USD 35,120 from export buyers</div></div>
-        <div className="kpi"><div className="kpi-label">Profit per goat (Nov)</div><div className="kpi-value">{kes(1240)}</div><div className="kpi-foot">After purchase, feed, slaughter and overheads</div></div>
+        <div className="kpi"><div className="kpi-label">Profit per goat (Nov)</div><div className="kpi-value">{kes(1240)}</div><div className="kpi-foot">After all costs</div></div>
       </div>
 
       <div className="grid-main">

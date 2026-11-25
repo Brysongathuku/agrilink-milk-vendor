@@ -34,7 +34,7 @@ export default function CreditRatingPage() {
   return (
     <div className="grid-main">
       <div className="stack">
-        <SectionCard title="SACCO Credit Readiness" subtitle="Your score updates as you log collections, sales and payments every day.">
+        <SectionCard title="SACCO Credit Readiness" subtitle="Based on your daily records and payments.">
           <div style={{ display: 'flex', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
             <Progress
               type="dashboard"

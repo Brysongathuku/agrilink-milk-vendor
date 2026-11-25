@@ -5,12 +5,14 @@ import { App, Button, Form, Input, InputNumber, Modal, Select, Table, type Table
 import { Download, Search } from 'lucide-react';
 import { PageHeader, SectionCard, StatusTag } from '@/components/ui';
 import { FARMERS, type Farmer } from '@/lib/data';
+import FarmerDrawer from '@/components/FarmerDrawer';
 
 export default function FarmersPage() {
   const { message } = App.useApp();
   const [rows, setRows] = useState<Farmer[]>(FARMERS);
   const [q, setQ] = useState('');
   const [open, setOpen] = useState(false);
+  const [viewing, setViewing] = useState<Farmer | null>(null);
   const [form] = Form.useForm();
 
   const data = rows.filter((r) => `${r.name} ${r.ward} ${r.village} ${r.memberNo}`.toLowerCase().includes(q.toLowerCase()));
@@ -27,7 +29,7 @@ export default function FarmersPage() {
     { title: 'Avg density', dataIndex: 'avgDensity', align: 'right', render: (v: number) => v.toFixed(3) },
     { title: 'Last delivery', dataIndex: 'lastDelivery' },
     { title: 'Status', dataIndex: 'status', render: (v: string) => <StatusTag status={v} /> },
-    { title: 'Actions', render: () => <Button size="small">View</Button> },
+    { title: 'Actions', render: (_v, r) => <Button size="small" onClick={() => setViewing(r)}>View</Button> },
   ];
 
   return (
@@ -36,7 +38,7 @@ export default function FarmersPage() {
         title="FARMERS"
         upper
         boxed={false}
-        subtitle="Your milk suppliers: Githunguri Dairy Farmers Co-operative members across Githunguri, Ikinu, Ngewa, Komothai and Githiga wards."
+        subtitle="Manage the farmers who supply your milk."
         actions={<Button type="primary" onClick={() => setOpen(true)}>Add Farmer</Button>}
       />
       <SectionCard title="Farmers Records">
@@ -112,6 +114,7 @@ export default function FarmersPage() {
           </div>
         </Form>
       </Modal>
+      <FarmerDrawer farmer={viewing} onClose={() => setViewing(null)} />
     </div>
   );
 }

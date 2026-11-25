@@ -31,7 +31,7 @@ export default function ReceivingPage() {
       <ListPage
         eyebrow="Livestock Sourcing"
         title="Receiving & Tagging"
-        subtitle="Animals are tagged on arrival. The tag number links each animal to its supplier, batch and every stage after."
+        subtitle="Register and tag animals as they arrive."
         chips={[
           { value: rows.length, label: 'Animals shown' },
           { value: rows.filter((r) => r.stage === 'Feedlot').length, label: 'In feedlot' },

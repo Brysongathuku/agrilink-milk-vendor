@@ -30,7 +30,7 @@ const cols: TableColumnsType<Req> = [
 export default function SupplyRequestsPage() {
   return (
     <div className="stack">
-      <PageHeader title="Supply Requests" subtitle="Manage and track milk supply requests between corporates and your business" />
+      <PageHeader title="Supply Requests" subtitle="Manage supply requests from corporate buyers" />
       <SectionCard>
         <div className="toolbar">
           <Input prefix={<Search size={16} color="#9ca3af" />} placeholder="Search requests..." style={{ maxWidth: 420 }} />

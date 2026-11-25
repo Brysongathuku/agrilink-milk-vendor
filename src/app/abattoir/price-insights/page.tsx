@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button, Segmented, Table, Tag, type TableColumnsType } from 'antd';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Info, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import { SectionCard } from '@/components/ui';
 import { SPECIES, SPECIES_COLORS, type Species } from '@/lib/abattoir-data';
 import { SERIES } from '@/lib/theme';
@@ -76,9 +76,9 @@ export default function PriceInsightsPage() {
       <div className="insight-hero">
         <div>
           <span className="pill">● LIVESTOCK & MEAT PRICES</span>
-          <h1 className="insight-title">Buy right at the market, sell right abroad.</h1>
+          <h1 className="insight-title">Livestock prices for better buying.</h1>
           <p className="muted" style={{ fontSize: 17, maxWidth: 560 }}>
-            Live-weight prices from the main ASAL livestock markets and export carcass prices for the Gulf, so you pay pastoralists fairly and price orders correctly.
+            Track live-weight prices across livestock markets and meat prices in export markets.
           </p>
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 18, flexWrap: 'wrap' }}>
             <span style={{ border: '1px solid #ccefdf', background: '#fff', borderRadius: 999, padding: '8px 16px' }}>Last updated: 24 Nov 2026</span>
@@ -133,7 +133,6 @@ export default function PriceInsightsPage() {
       <SectionCard title="Export carcass prices" subtitle="Gulf markets, USD per kg">
         <Table<Exp> rowKey="key" columns={exportCols} dataSource={EXPORT} pagination={false} scroll={{ x: 760 }} />
       </SectionCard>
-      <p className="demo-note"><Info size={14} /> Indicative demo prices. Connect market and export price feeds to make them live.</p>
     </div>
   );
 }

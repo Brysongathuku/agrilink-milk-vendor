@@ -29,7 +29,7 @@ const cols: TableColumnsType<Supplier> = [
 export default function SuppliersPage() {
   return (
     <div className="stack">
-      <PageHeader eyebrow="AgriLink · Sourcing" title="Supplier and Farmer Database" subtitle="Track sourcing partners and their performance" boxed={false} />
+      <PageHeader eyebrow="AgriLink · Sourcing" title="Suppliers" subtitle="Manage the farmers and suppliers you buy from." boxed={false} />
       <Hero chips={[{ value: 7, label: 'Partners' }, { value: 4, label: 'Value chains' }, { value: 7, label: 'Buyers' }, { value: 2, label: 'New (30d)' }]} />
       <SectionCard>
         <div className="toolbar">

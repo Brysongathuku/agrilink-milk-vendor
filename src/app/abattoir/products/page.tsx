@@ -6,8 +6,6 @@ export default function AbattoirProductsPage() {
     <Marketplace
       products={AB_PRODUCTS}
       categories={AB_PRODUCT_CATEGORIES}
-      defaultHeading="Tools for Pastoralists & Slaughterhouses"
-      note="All prices are indicative demo prices in KES, to be confirmed with suppliers."
     />
   );
 }

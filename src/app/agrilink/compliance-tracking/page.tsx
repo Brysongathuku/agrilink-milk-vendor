@@ -35,7 +35,7 @@ export default function CompliancePage() {
         r.doc && r.status === 'Valid' ? (
           <Button size="small">View</Button>
         ) : (
-          <Button size="small" type="primary" icon={<Upload size={13} />} onClick={() => message.success('Upload dialog (demo)')}>
+          <Button size="small" type="primary" icon={<Upload size={13} />} onClick={() => message.info('Document upload is coming soon')}>
             Upload
           </Button>
         ),
@@ -47,7 +47,7 @@ export default function CompliancePage() {
       <PageHeader
         eyebrow="Compliance"
         title="Regulatory Compliance"
-        subtitle="Kenya Dairy Board requirements: pasteurization proof for every processed batch and valid medical certificates for every milk handler."
+        subtitle="Track your Kenya Dairy Board licences and certificates."
         actions={<Button type="primary" size="large" icon={<Upload size={18} />}>Upload document</Button>}
       />
       <Stats>

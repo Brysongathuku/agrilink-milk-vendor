@@ -46,7 +46,7 @@ export default function RevenuePage() {
   const totalGp = current.reduce((s, r) => s + gp(r), 0);
   return (
     <div className="stack">
-      <PageHeader title="Revenue & Profitability Tracking" subtitle="Track milk sales revenue and profit margins by product and channel" />
+      <PageHeader title="Revenue & Profitability Tracking" subtitle="Track revenue and profit by product" />
       <Stats>
         <StatCard label="Total Revenue (Nov)" value={kes(totalRev)} />
         <StatCard label="Gross Profit (Nov)" value={kes(totalGp)} color="#047857" />
@@ -61,7 +61,6 @@ export default function RevenuePage() {
           <Button type="primary" icon={<Plus size={16} />}>Add Entry</Button>
         </div>
         <Table<Rev> columns={cols} dataSource={ROWS} pagination={false} scroll={{ x: 1100 }} />
-        <p className="demo-note" style={{ marginTop: 12 }}>Cost per litre = farmer price (KES {FARMER_RATE.toFixed(2)}) + channel handling, cooling and spoilage.</p>
       </SectionCard>
     </div>
   );

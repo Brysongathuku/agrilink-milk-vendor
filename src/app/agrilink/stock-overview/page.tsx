@@ -37,7 +37,7 @@ export default function StockOverview() {
 
   return (
     <div className="stack">
-      <PageHeader title="Stock overview" subtitle="Track product quantities, units, expiry, and status for your milk business." />
+      <PageHeader title="Stock overview" subtitle="Track product quantities, units, expiry, and status." />
       <SectionCard>
         <div className="toolbar">
           <Input prefix={<Search size={16} color="#9ca3af" />} placeholder="Search by product name..." style={{ maxWidth: 380 }} value={q} onChange={(e) => setQ(e.target.value)} />

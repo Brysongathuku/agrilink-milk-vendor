@@ -40,7 +40,7 @@ export default function ExportOrdersPage() {
     <ListPage
       eyebrow="Dispatch & Export"
       title="Export Orders"
-      subtitle="Chilled and frozen meat orders from buyers in the Middle East, invoiced in USD."
+      subtitle="Manage orders from export buyers."
       chips={[
         { value: open.length, label: 'Open export orders' },
         { value: num(open.reduce((s, r) => s + r.kg, 0)) + ' kg', label: 'To ship' },
@@ -49,7 +49,6 @@ export default function ExportOrdersPage() {
       ]}
       addLabel="New Export Order"
       searchPlaceholder="Search buyer, country, product..."
-      note={`Demo exchange rate: 1 USD = KES ${USD_KES}.`}
     >
       {(q) => <Table<Row> rowKey="id" columns={cols} dataSource={ROWS.filter((r) => rowMatches(r, q))} pagination={false} scroll={{ x: 1500 }} />}
     </ListPage>

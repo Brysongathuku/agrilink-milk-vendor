@@ -54,7 +54,7 @@ export default function FeedlotPage() {
     <ListPage
       eyebrow="Processing"
       title="Feedlot"
-      subtitle="Feeding, veterinary drugs, vaccines and treatment cost per pen and per head, plus any deaths."
+      subtitle="Track feeding, treatment and losses in the feedlot."
       chips={[
         { value: PENS.filter((p) => p.status === 'Healthy' || p.status === 'Under watch').reduce((s, p) => s + p.head, 0), label: 'Head in feedlot' },
         { value: kes(PENS.reduce((s, p) => s + p.feedCost, 0)), label: 'Feed cost (Nov)' },

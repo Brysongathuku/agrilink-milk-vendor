@@ -37,7 +37,7 @@ export default function AbCompliancePage() {
         r.doc && r.status === 'Valid' ? (
           <Button size="small">View</Button>
         ) : (
-          <Button size="small" type="primary" icon={<Upload size={13} />} onClick={() => message.info('Upload dialog (demo)')}>
+          <Button size="small" type="primary" icon={<Upload size={13} />} onClick={() => message.info('Document upload is coming soon')}>
             Upload
           </Button>
         ),
@@ -49,7 +49,7 @@ export default function AbCompliancePage() {
       <PageHeader
         eyebrow="Compliance"
         title="Licences & Certificates"
-        subtitle="Veterinary, NEMA, county, Halal and export requirements, with expiry tracking per premises, batch, shipment and staff member."
+        subtitle="Track your licences, permits and certificates."
         actions={<Button type="primary" size="large" icon={<Upload size={18} />}>Upload document</Button>}
       />
       <Stats>

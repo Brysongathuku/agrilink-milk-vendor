@@ -47,7 +47,7 @@ export default function ClientOrders() {
       <ListPage
         eyebrow="Orders & Planning"
         title="Client Orders"
-        subtitle="Every order works out the live animals to buy from the expected yield for that species."
+        subtitle="Track client orders and the animals needed to fill them."
         chips={[
           { value: rows.length, label: 'Orders' },
           { value: rows.filter((r) => r.market === 'Export').length, label: 'Export' },

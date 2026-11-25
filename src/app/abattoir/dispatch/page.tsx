@@ -36,7 +36,7 @@ export default function DispatchPage() {
     <ListPage
       eyebrow="Dispatch & Export"
       title="Dispatch & Delivery"
-      subtitle="Finished products leave stores in temperature-controlled vehicles, timed to each client's delivery slot."
+      subtitle="Track deliveries to your customers."
       chips={[
         { value: ROWS.filter((r) => r.status !== 'Delivered').length, label: 'Open dispatches' },
         { value: num(ROWS.filter((r) => r.status !== 'Delivered').reduce((s, r) => s + r.kg, 0)) + ' kg', label: 'To deliver' },

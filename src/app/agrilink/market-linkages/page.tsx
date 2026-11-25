@@ -50,7 +50,7 @@ export default function MarketLinkagesPage() {
       <PageHeader
         eyebrow="Buyer workspace"
         title="Market Opportunities"
-        subtitle="Buyer demand for your milk, grouped by the same customer categories you use in Sales."
+        subtitle="Find buyers for your milk."
         boxed={false}
         actions={
           <>

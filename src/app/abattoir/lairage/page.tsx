@@ -40,7 +40,7 @@ export default function LairagePage() {
     <ListPage
       eyebrow="Processing"
       title="Lairage"
-      subtitle="Animals are weighed on entry, rested and checked by the vet (ante-mortem) before slaughter. Shrinkage is worked out from the purchase weight."
+      subtitle="Track animals held before slaughter."
       chips={[
         { value: 88, label: 'Head in lairage' },
         { value: ROWS.filter((r) => r.antemortem === 'Passed').length + '/' + ROWS.length, label: 'Passed ante-mortem' },

@@ -50,7 +50,7 @@ export default function ExpensesPage() {
       <ListPage
         eyebrow="Finance"
         title="Operating Expenses"
-        subtitle="County fees, vet inspection, NEMA waste disposal, electricity, water, fuel, maintenance, cleaning and hay feed."
+        subtitle="Track the running costs of the abattoir."
         chips={[
           { value: kes(total), label: 'Expenses (Nov)' },
           { value: kes(Math.round(total / 699)), label: 'Overhead / animal' },
@@ -60,7 +60,6 @@ export default function ExpensesPage() {
         addLabel="Add Expense"
         onAdd={() => setOpen(true)}
         searchPlaceholder="Search expenses..."
-        note="Overhead per animal = November expenses ÷ 699 animals slaughtered. It is added to each animal's cost on the Cost & Profit page."
       >
         {(q) => (
           <div className="grid-main">

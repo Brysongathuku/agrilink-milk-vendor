@@ -58,7 +58,7 @@ export default function DeliveriesPage() {
       <PageHeader
         eyebrow="Sales"
         title="Deliveries"
-        subtitle="Track delivery quantities and drop-off locations for every customer."
+        subtitle="Track deliveries to your customers."
         actions={<Button type="primary" size="large" icon={<Plus size={18} />} onClick={() => setOpen(true)}>Schedule Delivery</Button>}
       />
       <Stats>

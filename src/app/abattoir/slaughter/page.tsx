@@ -55,7 +55,7 @@ export default function SlaughterPage() {
     <ListPage
       eyebrow="Processing"
       title="Slaughter"
-      subtitle="Live animals issued from stores to production. Each slaughter records weights, offals, condemnations, charges and the meat inspector's stamp."
+      subtitle="Record slaughter details, yields and inspection results."
       chips={[
         { value: 94, label: 'Slaughtered today' },
         { value: (ROWS.reduce((s, r) => s + dressing(r), 0) / ROWS.length).toFixed(1) + '%', label: 'Avg dressing %' },
@@ -64,7 +64,6 @@ export default function SlaughterPage() {
       ]}
       addLabel="Record Slaughter"
       searchPlaceholder="Search slaughter no, tag, batch..."
-      note="Dressing % = hot carcass weight ÷ live weight before slaughter."
     >
       {(q) => <Table<Row> rowKey="no" columns={cols} dataSource={ROWS.filter((r) => rowMatches(r, q))} pagination={false} scroll={{ x: 1600 }} />}
     </ListPage>

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { App, Button, Checkbox, Input, Table, type TableColumnsType } from 'antd';
-import { Megaphone, MessageSquare, Send } from 'lucide-react';
+import { MessageSquare, Send } from 'lucide-react';
 import { PageHeader, SectionCard, StatusTag } from '@/components/ui';
 import { PASTORALISTS } from '@/lib/abattoir-data';
 
@@ -38,7 +38,7 @@ export default function BroadcastPage() {
       <PageHeader
         eyebrow="Community"
         title="Live-Weight Price Broadcast"
-        subtitle="Send this week's buying prices and payment updates to pastoralists by SMS or WhatsApp, in English or Kiswahili."
+        subtitle="Send prices and updates to pastoralists by SMS or WhatsApp."
         boxed={false}
       />
       <div className="grid-main">
@@ -80,7 +80,6 @@ export default function BroadcastPage() {
           {recipients.map((r) => (
             <div className="kv" key={r.id}><span>{r.name}<span className="muted"> · {r.area}</span></span><span className="muted">{r.phone}</span></div>
           ))}
-          <div className="demo-note" style={{ marginTop: 10 }}><Megaphone size={14} /> Prices match the Market Access › Price Insights page.</div>
         </SectionCard>
       </div>
       <SectionCard title="Broadcast log">

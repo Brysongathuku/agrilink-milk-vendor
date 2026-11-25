@@ -2,7 +2,6 @@ import {
   ArrowLeftRight,
   ChartColumn,
   Boxes,
-  Briefcase,
   ClipboardList,
   DollarSign,
   FileText,
@@ -39,6 +38,17 @@ import {
   Megaphone,
   Settings,
   Factory,
+  CloudSun,
+  CreditCard,
+  Stethoscope,
+  Tractor,
+  HeartPulse,
+  ListTodo,
+  Milk,
+  MapPin,
+  Route,
+  CalendarDays,
+  HandCoins,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -140,7 +150,6 @@ export const NAV: NavItem[] = [
       { label: 'Permission Profiles', href: `${B}/permission-profiles`, icon: UserCog },
     ],
   },
-  { key: 'profile', label: 'Profile', icon: Briefcase, href: `${B}/agency-profile` },
 ];
 
 const A = '/abattoir';
@@ -148,12 +157,43 @@ const A = '/abattoir';
 export const ABATTOIR_NAV: NavItem[] = [
   { key: 'ab-analytics', label: 'Analytics', icon: House, href: A },
   {
+    key: 'ab-market',
+    label: 'Market Place',
+    icon: ShoppingBag,
+    children: [
+      { label: 'Products', href: `${A}/products`, icon: Package },
+      { label: 'My Orders', href: `${A}/marketplace-orders`, icon: Truck },
+    ],
+  },
+  {
+    key: 'ab-finance',
+    label: 'Finance',
+    icon: Landmark,
+    children: [
+      { label: 'Operating Expenses', href: `${A}/expenses`, icon: Receipt },
+      { label: 'Creditors & Payouts', href: `${A}/payables`, icon: HandCoins },
+      { label: 'Cost & Profit', href: `${A}/profitability`, icon: ChartColumn },
+    ],
+  },
+  {
+    key: 'ab-sales',
+    label: 'Sales',
+    icon: TrendingUp,
+    children: [
+      { label: 'Customers', href: `${A}/customers`, icon: Users },
+      { label: 'Invoices & Proformas', href: `${A}/invoices`, icon: FileText },
+      { label: 'Payments & Debtors', href: `${A}/payments`, icon: Wallet },
+    ],
+  },
+  {
     key: 'ab-orders',
     label: 'Orders & Planning',
     icon: ClipboardList,
     children: [
       { label: 'Client Orders', href: `${A}/orders`, icon: ClipboardList },
       { label: 'Live Animal Planner', href: `${A}/planner`, icon: Calculator },
+      { label: 'Slaughter Schedule', href: `${A}/slaughter-schedule`, icon: CalendarDays },
+      { label: 'Trace Order / Animal', href: `${A}/trace`, icon: Route },
     ],
   },
   {
@@ -178,6 +218,15 @@ export const ABATTOIR_NAV: NavItem[] = [
     ],
   },
   {
+    key: 'ab-stores',
+    label: 'Stores',
+    icon: Boxes,
+    children: [
+      { label: 'Store Movements', href: `${A}/store-movements`, icon: ArrowLeftRight },
+      { label: 'Stock Balances', href: `${A}/stock`, icon: Boxes },
+    ],
+  },
+  {
     key: 'ab-dispatch',
     label: 'Dispatch & Export',
     icon: Ship,
@@ -185,34 +234,6 @@ export const ABATTOIR_NAV: NavItem[] = [
       { label: 'Dispatch & Delivery', href: `${A}/dispatch`, icon: Truck },
       { label: 'Export Orders', href: `${A}/export-orders`, icon: Globe },
       { label: 'Shipments & Documents', href: `${A}/shipments`, icon: FileCheck },
-    ],
-  },
-  {
-    key: 'ab-sales',
-    label: 'Sales',
-    icon: TrendingUp,
-    children: [
-      { label: 'Customers', href: `${A}/customers`, icon: Users },
-      { label: 'Invoices & Proformas', href: `${A}/invoices`, icon: FileText },
-      { label: 'Payments & Debtors', href: `${A}/payments`, icon: Wallet },
-    ],
-  },
-  {
-    key: 'ab-finance',
-    label: 'Finance',
-    icon: Landmark,
-    children: [
-      { label: 'Operating Expenses', href: `${A}/expenses`, icon: Receipt },
-      { label: 'Cost & Profit', href: `${A}/profitability`, icon: ChartColumn },
-    ],
-  },
-  {
-    key: 'ab-market',
-    label: 'Market Place',
-    icon: ShoppingBag,
-    children: [
-      { label: 'Products', href: `${A}/products`, icon: Package },
-      { label: 'My Orders', href: `${A}/marketplace-orders`, icon: Truck },
     ],
   },
   {
@@ -242,21 +263,58 @@ export const ABATTOIR_NAV: NavItem[] = [
       { label: 'Department Access', href: `${A}/access`, icon: Settings },
     ],
   },
-  { key: 'ab-profile', label: 'Profile', icon: Briefcase, href: `${A}/settings` },
 ];
 
-// Profile switcher: Milk Vendor and Abattoir are active; the rest are listed but locked.
-export const PROFILE_HOME: Record<string, string> = { 'Milk Vendor': '/agrilink', Abattoir: '/abattoir' };
+const D = '/dairy-farmer';
 
-export const PROFILE_OPTIONS = [
-  'Milk Vendor',
-  'Abattoir',
-  'Aggregator',
-  'Farmer',
-  'Agronomists',
-  'Infarm Investor',
-  'Agribusiness',
-  'Agroprocessor',
-  'Seed producer',
-  'SACCO',
-].map((p) => ({ value: p, label: p, className: PROFILE_HOME[p] ? undefined : 'locked-option' }));
+export const DAIRY_NAV: NavItem[] = [
+  { key: 'df-weather', label: 'Weather', icon: CloudSun, href: `${D}/weather` },
+  {
+    key: 'df-market',
+    label: 'Marketplace',
+    icon: Store,
+    children: [{ label: 'Products', href: `${D}/products`, icon: Package }],
+  },
+  {
+    key: 'df-wallet',
+    label: 'My Wallet',
+    icon: Wallet,
+    children: [
+      { label: 'E-Wallet', href: `${D}/e-wallet`, icon: CreditCard },
+      { label: 'Transactions', href: `${D}/transactions`, icon: ArrowLeftRight },
+    ],
+  },
+  { key: 'df-officers', label: 'Extension Officers', icon: Stethoscope, href: `${D}/extension` },
+  {
+    key: 'df-farm',
+    label: 'Farm Management',
+    icon: Tractor,
+    children: [
+      { label: 'Farm Overview', href: D, icon: House },
+      { label: 'My Farm', href: `${D}/farm`, icon: MapPin },
+      { label: 'My Herd', href: `${D}/herd`, icon: Users },
+      { label: 'Milk Records', href: `${D}/milk-records`, icon: Milk },
+      { label: 'Breeding & Health', href: `${D}/health`, icon: HeartPulse },
+      { label: 'Feeding', href: `${D}/feeding`, icon: Wheat },
+      { label: 'Farm Tasks', href: `${D}/tasks`, icon: ListTodo },
+      { label: 'Milk Buyers', href: `${D}/milk-buyers`, icon: Link2 },
+      { label: 'Farm to Fork', href: `${D}/farm-to-fork`, icon: Route },
+    ],
+  },
+];
+
+// Livestock ecosystem profiles, grouped as in the profile switcher.
+// Only Milk Vendor, Abattoir and Dairy Farmer open a workspace for now.
+export const PROFILE_GROUPS: { label: string; profiles: string[] }[] = [
+  { label: 'Farmers', profiles: ['Dairy Farmer', 'Pastoralist', 'Crop Farmer'] },
+  { label: 'Businesses', profiles: ['Milk Vendor', 'Abattoir', 'Aggregator', 'Agribusiness', 'Agroprocessor'] },
+  { label: 'Advisors', profiles: ['Extension Officer'] },
+];
+
+export const PROFILES = PROFILE_GROUPS.flatMap((g) => g.profiles);
+
+export const PROFILE_HOME: Record<string, string> = {
+  'Milk Vendor': '/agrilink',
+  Abattoir: '/abattoir',
+  'Dairy Farmer': '/dairy-farmer',
+};

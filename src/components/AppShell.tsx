@@ -3,34 +3,68 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Select, Tooltip, App } from 'antd';
-import { ChevronDown, ChevronUp, LogOut, Menu, MessageCircle, X } from 'lucide-react';
-import { ABATTOIR_NAV, NAV, PROFILE_HOME, PROFILE_OPTIONS } from '@/lib/nav';
+import { App, Dropdown, Tooltip, type MenuProps } from 'antd';
+import { Beef, Briefcase, Building2, ChevronDown, ChevronUp, GraduationCap, LogOut, Menu, MessageCircle, Milk, Sprout, Store, Tent, X, type LucideIcon } from 'lucide-react';
+import { ABATTOIR_NAV, DAIRY_NAV, NAV, PROFILE_GROUPS, PROFILE_HOME, PROFILES, type NavItem } from '@/lib/nav';
+
+const PROFILE_ICONS: Record<string, LucideIcon> = {
+  'Milk Vendor': Store,
+  Abattoir: Beef,
+  'Dairy Farmer': Milk,
+  Pastoralist: Tent,
+  'Crop Farmer': Sprout,
+  'Extension Officer': GraduationCap,
+};
+
+const inSection = (path: string, base: string) => path === base || path.startsWith(`${base}/`);
+
+function workspaceFor(path: string): { profile: string; nav: NavItem[]; settings: string; user: { name: string; initials: string } } {
+  const me = { name: 'Bryson Gathuku', initials: 'BG' };
+  if (inSection(path, '/abattoir')) return { profile: 'Abattoir', nav: ABATTOIR_NAV, settings: '/abattoir/settings', user: me };
+  if (inSection(path, '/dairy-farmer'))
+    return { profile: 'Dairy Farmer', nav: DAIRY_NAV, settings: '/dairy-farmer/farm', user: { name: 'Grace Wanjiku', initials: 'GW' } };
+  return { profile: 'Milk Vendor', nav: NAV, settings: '/agrilink/agency-profile', user: me };
+}
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { message } = App.useApp();
 
-  const isAbattoir = pathname === '/abattoir' || pathname.startsWith('/abattoir/');
-  const profile = isAbattoir ? 'Abattoir' : 'Milk Vendor';
-  const nav = isAbattoir ? ABATTOIR_NAV : NAV;
+  const { profile, nav, settings: settingsHref, user } = workspaceFor(pathname);
+  const ProfileIcon = PROFILE_ICONS[profile] ?? Building2;
 
-  const groupForPath = (p: string) =>
-    nav.find((n) => n.children?.some((c) => c.href === p))?.key ?? null;
+  const groupForPath = (p: string) => nav.find((n) => n.children?.some((c) => c.href === p))?.key ?? null;
 
   const [open, setOpen] = useState<Record<string, boolean>>(() => {
     const g = groupForPath(pathname);
     return g ? { [g]: true } : {};
   });
-
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const g = groupForPath(pathname);
     if (g) setOpen((o) => ({ ...o, [g]: true }));
-    setMobileOpen(false); // close the mobile menu after navigating
+    setMobileOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  // Every AgriLink profile is listed. Only Milk Vendor and Abattoir open anything for now.
+  const profileItems: MenuProps['items'] = PROFILE_GROUPS.map((g) => ({
+    type: 'group' as const,
+    key: g.label,
+    label: g.label,
+    children: g.profiles.map((p) => {
+      const Icon = PROFILE_ICONS[p] ?? Building2;
+      return { key: p, label: p, icon: <Icon size={16} />, className: PROFILE_HOME[p] ? undefined : 'locked-option' };
+    }),
+  }));
+
+  const userItems: MenuProps['items'] = [
+    { key: 'profile', label: <Link href={settingsHref}>Profile</Link>, icon: <Briefcase size={16} /> },
+    { type: 'divider' },
+    { key: 'logout', label: 'Log Out', icon: <LogOut size={16} />, danger: true },
+  ];
 
   return (
     <div className="shell">
@@ -42,21 +76,36 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/pesira-logo.png" alt="Pesira" className="brand-logo" />
-          <div className="brand-app">AgriLink</div>
-          <div className="brand-role">{profile}</div>
-          {/* Every AgriLink profile is listed; only Milk Vendor and Abattoir are active, the rest do nothing. */}
-          <Select
-            className="profile-select"
-            size="large"
-            value={profile}
-            options={PROFILE_OPTIONS}
-            onChange={(v: string) => {
-              const home = PROFILE_HOME[v];
-              if (home && v !== profile) router.push(home);
+          <div className="brand-app">
+            AgriLink <span className="brand-eco">Livestock</span>
+          </div>
+
+          <Dropdown
+            trigger={['click']}
+            menu={{
+              items: profileItems,
+              selectable: true,
+              selectedKeys: [profile],
+              onClick: ({ key }) => {
+                const home = PROFILE_HOME[key];
+                if (home && key !== profile) router.push(home);
+              },
             }}
-            popupMatchSelectWidth
-          />
+          >
+            <button type="button" className="switcher">
+              <span className="switcher-icon">
+                <ProfileIcon size={17} />
+              </span>
+              <span className="switcher-text">
+                <span className="switcher-title">{profile}</span>
+                <span className="switcher-sub">{PROFILES.length - 1} other accounts</span>
+              </span>
+              <ChevronDown size={16} className="switcher-chev" />
+            </button>
+          </Dropdown>
         </div>
+
+        <div className="sidebar-divider" />
 
         <nav className="nav">
           {nav.map((item) => {
@@ -100,12 +149,29 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               </div>
             );
           })}
-          <div className="nav-divider" />
-          <button type="button" className="nav-item logout" onClick={() => message.info('Demo mode: log out is disabled')}>
-            <LogOut size={20} strokeWidth={1.7} />
-            <span>Log Out</span>
-          </button>
         </nav>
+
+        <div className="sidebar-user">
+          <Dropdown
+            trigger={['click']}
+            placement="topLeft"
+            menu={{
+              items: userItems,
+              onClick: ({ key }) => {
+                if (key === 'logout') message.info('Log out is turned off in the prototype');
+              },
+            }}
+          >
+            <button type="button" className="user-card">
+              <span className="user-avatar">{user.initials}</span>
+              <span className="user-text">
+                <span className="user-name">{user.name}</span>
+                <span className="user-role">{profile}</span>
+              </span>
+              <ChevronUp size={16} className="switcher-chev" />
+            </button>
+          </Dropdown>
+        </div>
       </aside>
 
       <div className="main">
@@ -115,14 +181,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/pesira-logo.png" alt="Pesira" className="topbar-logo" />
-          <Tooltip title="Bryson Gathuku">
-            <div className="avatar">BG</div>
+          <Tooltip title={user.name}>
+            <div className="avatar">{user.initials}</div>
           </Tooltip>
         </header>
         <main className="content">{children}</main>
       </div>
 
-      <button type="button" className="chat-fab" aria-label="Chat" onClick={() => message.info('Support chat coming soon')}>
+      <button type="button" className="chat-fab" aria-label="Chat" onClick={() => message.info('Support chat is coming soon')}>
         <MessageCircle size={24} />
       </button>
     </div>

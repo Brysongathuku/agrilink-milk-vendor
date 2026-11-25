@@ -74,7 +74,7 @@ export default function EngagementPage() {
 
       <SectionCard
         title="Collection & Delivery Schedule"
-        subtitle="Times farmers bring milk and when you deliver to customers"
+        subtitle="Set collection and delivery times"
         extra={<Button type="primary" icon={<Plus size={16} />} onClick={() => setOpen(true)}>Set delivery time</Button>}
       >
         <Table<Slot> columns={slotCols} dataSource={slots} pagination={false} scroll={{ x: 1000 }} />

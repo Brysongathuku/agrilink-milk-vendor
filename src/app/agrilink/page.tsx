@@ -272,7 +272,6 @@ export default function AnalyticsPage() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="demo-note">Off-takers/FMCG take the largest volume; households pay the best price per litre.</div>
         </Panel>
       </div>
     </div>

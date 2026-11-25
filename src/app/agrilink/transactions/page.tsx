@@ -51,7 +51,7 @@ export default function LedgerPage() {
       <PageHeader
         eyebrow="Finance"
         title="Milk Transactional Ledger"
-        subtitle="Milk received from farmers, what you paid them, and what you spent in the marketplace."
+        subtitle="Track milk received, farmer payments and marketplace spending."
         boxed={false}
       />
       <Stats>

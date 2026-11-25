@@ -40,7 +40,7 @@ const cols: TableColumnsType<Item> = [
 export default function InventoryPage() {
   return (
     <div className="stack">
-      <PageHeader eyebrow="AgriLink · Inventory" title="Raw Material Inventory" subtitle="Manage and monitor raw milk and input supplies across your value chains." boxed={false} />
+      <PageHeader eyebrow="AgriLink · Inventory" title="Stock" subtitle="Track milk and supplies in stock." boxed={false} />
       <Hero chips={[{ value: 7, label: 'Materials' }, { value: 1, label: 'Critical' }, { value: 2, label: 'Low stock' }, { value: 4, label: 'Healthy' }]} />
       <SectionCard>
         <div className="toolbar">

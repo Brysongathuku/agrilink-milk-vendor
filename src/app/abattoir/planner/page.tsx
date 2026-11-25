@@ -33,7 +33,7 @@ export default function LiveAnimalPlanner() {
 
   return (
     <div className="stack">
-      <PageHeader eyebrow="Orders & Planning" title="Live Animal Planner" subtitle="Work out how many live animals to buy to fill an order. Example: 200 kg of goat meat at a 43% yield needs about 465 kg of live goats." boxed={false} />
+      <PageHeader eyebrow="Orders & Planning" title="Live Animal Planner" subtitle="Work out how many live animals to buy for an order." boxed={false} />
       <div className="grid-main">
         <Panel icon={<Calculator size={20} color={ICON_GREEN} />} title="Order calculator">
           <div style={{ marginBottom: 16 }}>
@@ -65,13 +65,10 @@ export default function LiveAnimalPlanner() {
             <div className="kpi"><div className="kpi-label">Order value (local)</div><div className="kpi-value">{kes(Math.round(localValue))}</div><div className="kpi-foot">before transport, feed and slaughter costs</div></div>
           </div>
         </Panel>
-        <Panel title="How it works">
+        <Panel title="How it's calculated">
           <div className="kv"><span>Live weight</span><b>Meat ordered ÷ yield</b></div>
           <div className="kv"><span>Animals</span><b>Live weight ÷ average live weight</b></div>
           <div className="kv"><span>Buying cost</span><b>Live weight × live price</b></div>
-          <p className="muted" style={{ fontSize: 13, marginTop: 12 }}>
-            Yields and prices come from the species settings below and can be adjusted per order. Actual dressing % from the Slaughter page updates these over time.
-          </p>
         </Panel>
       </div>
       <Panel title="Species settings" bodyStyle={{ padding: 0 }}>

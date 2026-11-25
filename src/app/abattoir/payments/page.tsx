@@ -54,7 +54,7 @@ export default function PaymentsPage() {
     <ListPage
       eyebrow="Sales"
       title="Payments & Debtors"
-      subtitle="Money received against invoices, and who still owes you by how overdue they are."
+      subtitle="Track payments received and outstanding balances."
       chips={[
         { value: 'KES ' + num(PAYMENTS.filter((p) => p.currency === 'KES').reduce((s, p) => s + p.amount, 0)), label: 'Received (local, Nov)' },
         { value: 'USD ' + num(PAYMENTS.filter((p) => p.currency === 'USD').reduce((s, p) => s + p.amount, 0)), label: 'Received (export, Nov)' },

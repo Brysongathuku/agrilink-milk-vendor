@@ -46,7 +46,7 @@ export default function AbInvoicesPage() {
     <ListPage
       eyebrow="Sales"
       title="Invoices & Proformas"
-      subtitle="Proformas go out before an order is confirmed. Invoices carry the credit terms (14 or 30 days) and due date."
+      subtitle="Create and manage proformas and invoices."
       chips={[
         { value: ROWS.filter((r) => r.kind === 'Proforma').length, label: 'Open proformas' },
         { value: 'KES ' + num(kes.reduce((s, r) => s + r.amount - r.paid, 0)), label: 'Unpaid (local)' },
